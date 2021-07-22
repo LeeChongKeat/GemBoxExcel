@@ -1,0 +1,49 @@
+﻿<section>
+    <div class="card shadow">
+        <div class="card-header"><h3>Read Excel File</h3></div>
+        <div class="card-body">
+            <ol>
+                <li>
+                    <b>Load Excel</b> <br />
+                    <div class="alert alert-secondary" role="alert">
+                        ExcelFile workbook = ExcelFile.Load("wwwroot/data/xlsx/SimpleTemplate.xlsx");
+                    </div>
+                </li>
+                <li>
+                    <b>Code</b> <br />
+                    <div class="alert alert-secondary" role="alert">
+                        foreach (ExcelWorksheet worksheet in workbook.Worksheets) <br />
+                        { <br />
+                        &emsp;Console.WriteLine("{1} {0} {1}\n", worksheet.Name, new string('#', 30));<br />
+                        &emsp;foreach (ExcelRow row in worksheet.Rows)<br />
+                        &emsp;{<br />
+                        &emsp;&emsp;foreach (ExcelCell cell in row.AllocatedCells)<br />
+                        &emsp;&emsp;{<br />
+                        &emsp;&emsp;&emsp;string value = cell.Value?.ToString() ?? "EMPTY";<br />
+                        &emsp;&emsp;&emsp;value = value.Length > 15 ? value.Remove(15) + "…" : value;<br />
+                        &emsp;&emsp;&emsp;Console.Write($"{value} [{cell.ValueType}]".PadRight(30));<br />
+                        &emsp;&emsp;}<br />
+                        &emsp;}<br />
+                        }<br />
+                    </div>
+                </li>
+                <li>
+                    <b>Remark</b> <br />
+                    <div class="alert alert-secondary" role="alert">
+                        <ul>
+                            <li>
+                                <b><span class="keyword-code">worksheet</span>.Name</b> - read sheet name <br />
+                            </li>
+                            <li>
+                                <b><span class="keyword-code">worksheet</span>.Rows</b> - read Row
+                            </li>
+                            <li>
+                                <b><span class="keyword-code">row</span>.AllocatedCells</b> - read Cell
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </div>
+</section>

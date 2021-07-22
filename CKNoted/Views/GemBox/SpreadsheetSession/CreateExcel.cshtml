@@ -1,0 +1,74 @@
+﻿<section>
+    <div class="card shadow">
+        <div class="card-header"><h3>Create Excel File</h3></div>
+        <div class="card-body">
+            <ol>
+                <li>
+                    <b>Load Excel</b> <br />
+                    <div class="alert alert-secondary" role="alert">
+                        ExcelFile workbook = ExcelFile.Load("wwwroot/data/xlsx/SimpleTemplate.xlsx");
+                    </div>
+                </li>
+                <li>
+                    <b>Create empty workbook</b> <br />
+                    <div class="alert alert-secondary" role="alert">
+                        var workbook = new ExcelFile();
+                    </div>
+                </li>
+                <li>
+                    <b>Add Sheet</b> <br />
+                    <div class="alert alert-secondary" role="alert">
+                        var worksheet = workbook.Worksheets.Add("Sheet Name");
+                    </div>
+                </li>
+                <li>
+                    <b>Add cell value</b> <br />
+                    <div class="alert alert-secondary" role="alert">
+                        worksheet.Cells["A1"].Value = "Value";
+                    </div>
+                </li>
+                <li>
+                    <b>Set cell width</b> <br />
+                    <div class="alert alert-secondary" role="alert">
+                        worksheet.Columns["A"].SetWidth(8, LengthUnit.ZeroCharacterWidth);
+                    </div>
+                </li>
+                <li>
+                    <b>Merged cell</b> <br />
+                    <div class="alert alert-secondary" role="alert">
+                        worksheet.Cells.GetSubrange("A3:A4").Merged = true;
+                    </div>
+                </li>
+                <li>
+                    <b>Set Style</b> <br />
+                    <div class="alert alert-secondary" role="alert">
+                        style = new CellStyle();<br />
+                        style.HorizontalAlignment = HorizontalAlignmentStyle.Center;<br />
+                        style.VerticalAlignment = VerticalAlignmentStyle.Center;<br />
+                        style.Font.Weight = ExcelFont.BoldWeight;<br />
+                        var mergedRange = worksheet.Cells.GetSubrange("I5:I14");<br />
+                        mergedRange.Merged = true;<br />
+                        mergedRange.Value = "T o p   1 0";<br />
+                        style.Rotation = -90;<br />
+                        style.FillPattern.SetSolid(SpreadsheetColor.FromArgb(198, 239, 206));<br />
+                        style.Borders.SetBorders(MultipleBorders.Right | MultipleBorders.Top, SpreadsheetColor.FromName(ColorName.Black), LineStyle.Thin);<br />
+                        mergedRange.Style = style;<br />
+                    </div>
+                </li>
+                <li>
+                    <b>Save Excel</b> <br />
+                    <div class="alert alert-secondary" role="alert">
+                        workbook.Save("Writing.xlsx");
+                    </div>
+                </li>
+                <li>
+                    <b>Convert to pdf</b> <br />
+                    <div class="alert alert-secondary" role="alert">
+                        workbook.Save("Convert.pdf", new PdfSaveOptions() { SelectionType = SelectionType.EntireFile });
+                    </div>
+                </li>
+            </ol>
+            <a class="btn btn-primary" asp-controller="GemBox" asp-action="GetDownload">Donwload</a>
+        </div>
+    </div>
+</section>

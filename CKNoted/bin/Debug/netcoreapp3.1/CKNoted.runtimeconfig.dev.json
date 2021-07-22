@@ -1,0 +1,9 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\chongkle.KEYSIGHT\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\chongkle.KEYSIGHT\\.nuget\\packages",
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+    ]
+  }
+}

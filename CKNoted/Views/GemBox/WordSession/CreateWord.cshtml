@@ -1,0 +1,31 @@
+﻿<section>
+    <div class="card shadow">
+        <div class="card-header"><h3>Create Word File</h3></div>
+        <div class="card-body">
+            <ol>
+                <li>
+                    <b>Create empty Word</b> <br />
+                    <div class="alert alert-secondary" role="alert">
+                        var document = new DocumentModel();
+                    </div>
+                </li>
+
+                <li>
+                    <b>Code</b> <br />
+                    <div class="alert alert-secondary" role="alert">
+                        position.LoadText("p style='font-family:Arial Narrow;color:royalblue;'>This is another rich formatted text./p>",
+                        LoadOptions.HtmlDefault);
+                    </div>
+                </li>
+                <li>
+                    <b>Convert to pdf</b> <br />
+                    <div class="alert alert-secondary" role="alert">
+                        document.Save("Writing.docx");
+                        workbook.Save("Convert.pdf", new PdfSaveOptions() { SelectionType = SelectionType.EntireFile });
+                    </div>
+                </li>
+            </ol>
+            <a class="btn btn-primary" asp-controller="GemBox" asp-action="GetDownload">Donwload</a>
+        </div>
+    </div>
+</section>
